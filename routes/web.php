@@ -37,7 +37,7 @@ Route::get('/empleado.create',[UserController::class,'create'])->name('empleado.
 
 Route::post('/empleado.create',[UserController::class,'store'])->name('empleado.create');
 
-Route::get('/empleado.CreateHorario{id}',[HorarioController::class,'create'])->name('empleado.horario.create');
+Route::get('/empleado.CreateHorario1{id}',[HorarioController::class,'create'])->name('empleado.horario.create');
 
 Route::post('/empleado.CreateHorario{id}',[HorarioController::class,'store'])->name('empleado.horario.create');
 
