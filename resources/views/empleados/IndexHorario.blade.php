@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
-{{$empleados->nombre}} 
+<h1 class="border text-dark">Horario de {{$empleados->nombre}} 
 {{$empleados->apellido}}  
-
-<a href="{{url('home')}}">Volver</a>
+</h1>
+<div class="table-responsive">
 <table class="table table-light">
     <thead class="thead-light">
         <tr>
-        <th>#</th>
+       
         <th>Fecha</th>
         <th>Hora LLegada</th>
         <th>Hora Salida</th>
@@ -19,25 +19,29 @@
     <tbody>
        @foreach( $horarios as $horario) 
         <tr>
-            <td>{{$horario->id}}</td>
+           
             <td>{{$horario->fecha}}</td>
             <td>{{$horario->hora_llegada}}</td>
             <td>{{$horario->hora_salida}}</td>
+            @if (auth()->id()==1)
             <td>
+                <form action="{{url('/empleado.horario'.$horario->id)}}" method="post">
+                @csrf 
+                {{method_field('DELETE')}}
+                <input type="submit" onclick="return confirm('quieres borrar') " value="Borrar">
+                </form>
+            
+             </td>
+             @endif
+             
 
-
-            <form action="{{url('/empleado.horario'.$horario->id)}}" method="post">
-            @csrf 
-            {{method_field('DELETE')}}
-            <input type="submit" onclick="return confirm('quieres borrar') " value="Borrar">
-            </form>
-            </td>
           
             
      
             
             
         </tr>
+        
         @endforeach
     </tbody>
     <tfoot>
@@ -46,4 +50,8 @@
         </tr>
     </tfoot>
 </table>
+<div class="d-flex justify-content-center">  
+<a class="btn btn-dark  " href="{{url('home')}}">Volver</a>
+</div>
+</div>
 @endsection

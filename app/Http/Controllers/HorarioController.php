@@ -57,8 +57,10 @@ class HorarioController extends Controller
          $datosHorario=$request->except('_token');
              
          Horario::insert($datosHorario);
+         
+         
         
-         return "Horario Creado" ;
+         return redirect()->route('empleado.horario',$id );
     }
 
     /**

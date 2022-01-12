@@ -9,8 +9,24 @@
     <title>My_horario</title>
 
 </head>
-<body>
-    <h1   class = "text-center text-primary"> My horarios </ h1> 
+<body id='welcome'>
+<div>  
+    
+
+  <!-- <img src='imagen1.jpg'  class="img-fluid" > -->
+ @auth
+  @if (auth()->id()==1)
+  
+  <a class="btn btn-dark ms-3" href="{{url('home')}}">Empleados</a>
+
+  @else
+  
+  <a class="btn btn-dark ms-3" href="{{url('home')}}">Horario</a>
+ 
+ @endif
+  @endauth
+</div>
+
 </body>
 </html>
 @endsection

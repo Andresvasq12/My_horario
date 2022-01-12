@@ -31,7 +31,7 @@ class UserController extends Controller
         'identificacion'=>'required',
         'apellido'=>'required',
         'password'=>'required|min:4',
-        'email'=>'required'
+        'email'=>'required|email|unique:users'
         ]) ;
 
         $datosEmpleado=$request->except('_token');
